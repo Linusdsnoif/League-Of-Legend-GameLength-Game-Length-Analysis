@@ -30,5 +30,5 @@ The dataset introduces a comprehensive array of columns featuring gameplay metri
 
 - 'patch' : The 'patch' column record the version of the match is playing on.
 
-- `participantid': This column represents a unique identifier for each player and team in a game. It allows us to distinguish each team in a match.
+- 'participantid': This column represents a unique identifier for each player and team in a game. It allows us to distinguish each team in a match.
 
