@@ -4,8 +4,7 @@ League of Legends Gamelength analysis is a data science project exploring the re
 
 Authors: Linus Lee
 
-## Introduction
-### General Introduction
+## General Introduction
 League of Legend is a 2009 multiplayer online battle arena video game developed and published by Riot Games. In the game, two teams of five players battle in player-versus-player combat, each team occupying and defending their half of the map. The data set the project will be working on is a professional data set that’s developed by Oracle's Elixir. The file records match data from professional LOL esports gaming matches throughout 2022. 
 
 This dataset captures key gameplay statistics and outcomes from all profession LOL match throughout 2022, offering various features such as individual player performance, champions pick, in-game statistics, and overall match summary.
