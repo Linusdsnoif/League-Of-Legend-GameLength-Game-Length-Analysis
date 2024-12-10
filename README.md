@@ -11,4 +11,24 @@ This dataset captures key gameplay statistics and outcomes from all profession L
 
 In the game of League of Legends (LOL), a power of a champion is based on five main category: xp(experience), gold, kills, assists, and cs(minionkills). Xp could help a champion to level up, gold helps a champion to buy items, kills and assists help champion to win advantage and gold in the game, and minionkills are the fundamental of the game to help a player to win gold and control the lanes when fighting against the opponent. If a team can have higher advantage at these five features then the team has higher chance to win the game and end the game sooner. These five features serves as an important feature of a match. 
 
-The central question we are interested in is **Given by the stats difference between both team, are we ablt to predict the game length of the match**. The project is going to use data analysis techniques to testify the impact of five features including xp(experience), gold, kills, assists, and cs(minionkills)). At the end, the project is going to use these statistics and other important feature to set up a prediction model to predict the gamelength of a match. 
+The central question we are interested in is **Given by the stats difference between both team, are we ablt to predict the game length of the match**. The project is going to use data analysis techniques to testify the impact of five features including xp(experience), gold, kills, assists, and cs(minionkills)). At the end, the project is going to use these statistics and other important feature to set up a prediction model to predict the gamelength of a match.
+
+## Introduction of Columns
+The dataset introduces a comprehensive array of columns featuring gameplay metrics and match outcomes from professional League of Legends esports matches. The data set has 150180 rows, and here is an introduction to some of the key columns the project is going to work on:
+
+- 'kills' : The 'kills' column quantifies the number of enemy champions a player or team successfully eliminated during the match. 
+
+- 'assists`: The 'assists' column records the number of assists credited to a player or team, indicating instances where they contributed to eliminating an enemy champion without securing the kill themselves.
+
+- 'xp': The 'xp' column records the total experience a player earn from the start of the game to the end of the game.
+
+- 'gold': The 'gold' column records the total gold a player earn from the start of the game to the end of the game.
+
+- 'minionskill': This column records the number of minions or neutral monsters slain by a player or team during the match. It reflects their ability to efficiently farm gold and experience points, crucial for character progression and itemization.
+  
+- 'league': The 'league' column denotes the specific league tournament in which the match took place.
+
+- 'patch' : The 'patch' column record the version of the match is playing on.
+
+- `participantid': This column represents a unique identifier for each player and team in a game. It allows us to distinguish each team in a match.
+
