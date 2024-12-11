@@ -14,7 +14,7 @@ In the game of League of Legends (LOL), a power of a champion is based on five m
 
 The central question we are interested in is **Given by the stats difference between both team, are we ablt to predict the game length of the match**. The project is going to use data analysis techniques to testify the impact of five features including xp(experience), gold, kills, assists, and cs(minionkills)). At the end, the project is going to use these statistics and other important feature to set up a prediction model to predict the gamelength of a match.
 
-## Introduction of Columns
+### Columns Introduction
 The dataset introduces a comprehensive array of columns featuring gameplay metrics and match outcomes from professional League of Legends esports matches. The data set has 150180 rows, and here is an introduction to some of the key columns the project is going to work on:
 
 - 'killsat15' : One team's count of kill for each individual player and team at 15mins.
