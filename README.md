@@ -103,8 +103,8 @@ The dataframe below seem to provide some interesting aggregate for our project.
 
 | gamelength        |   golddiffat15 |   xpdiffat15 |   csdiffat15 |   killsdiffat15 |   assistsdiffat15 |   sum_diff |
 |:------------------|---------------:|-------------:|-------------:|----------------:|------------------:|-----------:|
-| (937.999, 1864.0] |        336.487 |      74.4216 |     0.230162 |       0.228281  |         0.283189  |   411.651  |
-| (1864.0, 3467.0]  |        159.4   |    -106.031  |    -1.84314  |      -0.0128205 |        -0.0279035 |    51.4853 |
+| (932.999, 1864.0] |        350.399 |      75.4911 |     0.665099 |       0.244967  |        0.397554   |    427.197 |
+| (1864.0, 3577.0]  |        148.137 |     -84.9521 |    -1.89938  |       0.0043339 |        0.00282646 |     61.293 |
 
 *The **sum_diff** column is the sum of (golddiffat15, xpdiffat15, csdiffat15, killsdiffat15, assistsdiffat15)
 **We will using q-cut gamelength for the upcoming hypothesis test to simplify the procedure**
