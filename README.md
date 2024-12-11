@@ -60,6 +60,7 @@ Below is the head of the dataframe. **The dataframe is only going to be used for
 
 ## Univariate Analysis
 Below is the univariate analysis of kills difference at 15 mins and gamelength.
+
 <iframe
   src="assets/univariate_kill.html"
   width="800"
