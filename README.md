@@ -79,4 +79,5 @@ Below is also a univariate analysis of gamelength.
   frameborder="0"
 ></iframe>
 
-The histrogram shows that the distribution is almost nearly normal despite slightly skewness to the right, but overall the gamelength is noramlly distributed.
+The histrogram shows that the distribution is almost nearly normal despite slightly skewness to the right, but overall the gamelength is noramlly distributed 
+suggesting that the data is well distributed.
