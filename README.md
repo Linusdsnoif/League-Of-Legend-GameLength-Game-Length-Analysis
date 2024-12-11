@@ -176,6 +176,7 @@ Below is the observed distribution of `patch` when `killsat25` is missing and no
 |   12.21 | 0.00719655  |   0.000799616 |
 |   12.23 | 0.000719655 |   0.00615704  |
 
+
 After the permutation tests, the **observed statistic** for this permutation test is: 0.30041580041580035, and the **p-value** is 0. The plot below shows the empirical distribution of the TVD for the test.
 
 <iframe
@@ -185,5 +186,77 @@ After the permutation tests, the **observed statistic** for this permutation tes
   frameborder="0"
 ></iframe>
 
+Our p-value is smaller than 0.05 significance level, therefore we **reject** null hypothesis, and therefore the missingness of killsat25 **does** depend on `patch` column.
 
+## Hypothesis Testing
+For the hypothesis test, the project aim to assess whether there is a relationship between the gamelength and the mean of sum differnce of stats(`golddiffat15`, `xpdiffat15`, `csdiffat15`,`killsdiffat15`,`assistsdiffat15`, `sumdiffat15`) at 15mins. The investigation of relationship is better because it helps us understanding the impact of building early advantage in the game to the gamelength.
+
+Here is the head of dataframe we going to perform our hypothesis testing.
+
+|     | gamelength        |   sum_diff |
+|----:|:------------------|-----------:|
+|  10 | (937.999, 1864.0] |      -1542 |
+|  46 | (1864.0, 3467.0]  |       3513 |
+|  94 | (1864.0, 3467.0]  |       1677 |
+| 142 | (1864.0, 3467.0]  |      -3359 |
+| 166 | (1864.0, 3467.0]  |      -1799 |
+
+This is the example of dataframe to perform our tvd test statistic
+
+| gamelength        |   sum_diff |
+|:------------------|-----------:|
+| (937.999, 1864.0] |   411.651  |
+| (1864.0, 3467.0]  |    51.4853 |
+
+**Null**: The distribution of mean of sum stats difference at 15mins for first quantile of gamelength is the same as the distribution of stats difference at 15mins for second quantile of gamelength
+
+**Alternative**: The distribution of mean of sum stats difference at 15mins for first quantile of gamelength is Not the same as the distribution of stats difference at 15mins for second quantile of gamelength
+
+**Test Statistics**: TVD
+
+**Significance Level**: 0.05
+
+After performing the permutation test on `sum_diff` column for 1000 times, our **observed test statistic** is: 360.16532641638827, and our **p-value** is: 0.008.
+
+Here is a histogram containing the distribution of our test statistics during the hypothesis test:
+
+<iframe
+  src="assets/hypothesis.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Our p-value is smaller than 0.05 significance level, therefore we **reject** null hypothesis, and this suggests the distribution of mean of sum stats difference at 15mins for first quantile of gamelength is Not the same as the distribution of stats difference at 15mins for second quantile of gamelength. The finding lead to the concept that the level of difference of stats at 15mins may affect the gamelength.
+
+## Framing a Prediction Problem
+From the hypothesis testing, we found out that getting huge difference of stats at 15mins may contribute to the length of the game, and therefore I hope to extend the finding to further extent. Since the game at 15mins still has a lot of factors that may deeply affect the outcome of the game. Is it possible to predict the gamelength by giving the stats difference at 25mins and the information about the feature of patch and the league?
+
+To address this finding, we can employ Linear Regression model to predict the possible gamelength given by the stats. For our prediction model, we will focus on the stats difference at 25mins and the version of patch and the name of the league in order to enhance our precision.
+
+In this part, we will one-hot encode the original `league` and `patch` column, and we will create a new `sum_diff`(would only contains the sum of xpdiffat25, golddiffat25, and csdiffat25), and we will square root the column of `killsassist`(sum of `killsdiffat25` and `assistsdiffat25`). As we are only predicting the gamelength based on the these features, we are going to drop the remaining irrelevant columns. 
+
+Below is the head of DataFrame we are using in this section: 
+
+|    | league   |   patch |   sum_diff |   killsassists |
+|---:|:---------|--------:|-----------:|---------------:|
+| 10 | LCKC     |   12.01 |       3980 |             11 |
+| 22 | LCKC     |   12.01 |      15059 |             19 |
+| 46 | LCKC     |   12.01 |       6682 |             14 |
+| 70 | LCKC     |   12.01 |       4920 |             12 |
+| 94 | LCKC     |   12.01 |       3838 |             12 |
+
+Our data will split into 80% training data and 20% testing data, and since our model is a regression our model, so we going to choose RMSE and R^2 as our metrics to evaluate our model performance as it could provide the most straightforward performance on how good is our prediction.
+
+## Baseline Model
+For the baseline model, we used a Linear Regression model, with the following two features: `sum_diff` and `patch`. The `sum_diff` is a quantitative column, so therefore we can leave the column as-is. However, the `patch` column is a categorical column, so therefore we will perform the OneHotencoding in our pipeline and at the end using the Lienar Regression model to predict the gamelength.
+
+After fitting the model, our R^2 score for the training data is: 0.3685153110578967, and the RMSE for training data is: 63446.681449617434. On the other hand, for the testing data the R^2 score is 0.36400612680386324, and the RMSE for testing data is: 62835.21088187913. The performance is considered acceptable since the game could be affected by various aspects such as strategy, player behavior, and even luck. There are various outside factors outside and inside the game.
+
+## Final Model
+In our final model, we added two more features: `league` and `killsassists`. We are adding these two features into our model because we believe that different league has different culture and would affect the gamelength differently such as player in Europe may play much aggressive than player in North America and therefore may shorten the gamelength than other areas. The `killsassists` column would enhave our precision because in League of Legend having a kill or assists could bring gold and xp to a player and therefore would help the model to evaluate the advantage of a player and a team.
+
+Our final model is going to use Lasso regression model. The two additional features we added (`league` and `killsassists`) the `league` is categorical column, so we going to employ OneHotencoder to the column and we also going to employ square root transformer to our `killsassists` column. In terms of tuning hyperparameters, the hyperparameter I chose is: **alpha** for the Lasso regression model. I am using the GridSearchCV to find the best possible alpha for Lasso in our regression model. At the end, we find that the best alpha possible by using GridSearchCV is: 0.5963623316594643.
+
+After fitting the model, our R^2 score for the training data is now improve to: 0.38012948662203216, and the RMSE for training data is now improve to: 62279.77921078074. On the other hand, for the testing data the R^2 score is 0.3851375657358337, and the RMSE for testing data is now: 60747.45740265901. The improvement performance is quite substaintial. It is suggested that the model has now improved its ability to predict the gamelength.
 
