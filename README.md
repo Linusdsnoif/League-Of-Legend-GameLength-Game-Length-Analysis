@@ -251,12 +251,28 @@ Our data will split into 80% training data and 20% testing data, and since our m
 ## Baseline Model
 For the baseline model, we used a Linear Regression model, with the following two features: `sum_diff` and `patch`. The `sum_diff` is a quantitative column, so therefore we can leave the column as-is. However, the `patch` column is a categorical column, so therefore we will perform the OneHotencoding in our pipeline and at the end using the Lienar Regression model to predict the gamelength.
 
-After fitting the model, our R^2 score for the training data is: 0.3685153110578967, and the RMSE for training data is: 63446.681449617434. On the other hand, for the testing data the R^2 score is 0.36400612680386324, and the RMSE for testing data is: 62835.21088187913. The performance is considered acceptable since the game could be affected by various aspects such as strategy, player behavior, and even luck. There are various outside factors outside and inside the game.
+After fitting the model, our R^2 score for the training data is: **0.3685153110578967**, and the RMSE for training data is: **63446.681449617434**. On the other hand, for the testing data the R^2 score is **0.36400612680386324**, and the RMSE for testing data is: **62835.21088187913**. The performance is considered acceptable since the game could be affected by various aspects such as strategy, player behavior, and even luck. There are various outside factors outside and inside the game.
 
 ## Final Model
 In our final model, we added two more features: `league` and `killsassists`. We are adding these two features into our model because we believe that different league has different culture and would affect the gamelength differently such as player in Europe may play much aggressive than player in North America and therefore may shorten the gamelength than other areas. The `killsassists` column would enhave our precision because in League of Legend having a kill or assists could bring gold and xp to a player and therefore would help the model to evaluate the advantage of a player and a team.
 
-Our final model is going to use Lasso regression model. The two additional features we added (`league` and `killsassists`) the `league` is categorical column, so we going to employ OneHotencoder to the column and we also going to employ square root transformer to our `killsassists` column. In terms of tuning hyperparameters, the hyperparameter I chose is: **alpha** for the Lasso regression model. I am using the GridSearchCV to find the best possible alpha for Lasso in our regression model. At the end, we find that the best alpha possible by using GridSearchCV is: 0.5963623316594643.
+Our final model is going to use Lasso regression model. The two additional features we added (`league` and `killsassists`) the `league` is categorical column, so we going to employ OneHotencoder to the column and we also going to employ square root transformer to our `killsassists` column. In terms of tuning hyperparameters, the hyperparameter I chose is: **alpha** for the Lasso regression model. I am using the GridSearchCV to find the best possible alpha for Lasso in our regression model. At the end, we find that the best alpha possible by using GridSearchCV is: **0.5963623316594643**.
 
-After fitting the model, our R^2 score for the training data is now improve to: 0.38012948662203216, and the RMSE for training data is now improve to: 62279.77921078074. On the other hand, for the testing data the R^2 score is 0.3851375657358337, and the RMSE for testing data is now: 60747.45740265901. The improvement performance is quite substaintial. It is suggested that the model has now improved its ability to predict the gamelength.
+After fitting the model, our R^2 score for the training data is now improve to: **0.38012948662203216**, and the RMSE for training data is now improve to: **62279.77921078074**. On the other hand, for the testing data the R^2 score is **0.3851375657358337**, and the RMSE for testing data is now: **60747.45740265901**. The improvement performance is quite substaintial. It is suggested that the model has now improved its ability to predict the gamelength.
 
+## Fairness Analysis
+In this section, we are going to assess if our model is fair among different areas. The question we are trying to answer here is: **“does my model perform worse for individuals who have monsterkills less than or equal to 100 than it does for individuals who have monster kills greater than 100?"** To answer this question, we performed a permutation test and examined the result of the difference in accuracy between the two groups. 
+
+The group `X` represents the players who have monsterkills less than or equal to 100, and group `Y` represents those who have monster kills greater than 100. Our evaluation metric is accuracy, and the significance level is 0.05. 
+
+The followings are our hypothesis:
+
+**Null hypothesis**: Our model is fair. Its RMSE of gamelength for games that happened in LCKC league is the same as the RMSE of gamelength for games that happened in league other than LCKC.
+
+**Alternative hypothesis**: Our model is unfair.Its RMSE of gamelength for games that happened in LCKC league is NOT the same as the RMSE of gamelength for games that happened in league other than LCKC.
+
+**Test statistics**: TVD
+
+**Significance Level**: 0.05
+
+After performing the permutation test, the result p-value we got is **0.595**, which is larger than the 0.05 significance level. Consequently, we **fail to reject** the null hypothesis. This outcome implies that our model predicts gamelength from games in LCKC and other than LCKC is similar. Consequently, our model appears to be fair that does not show obvious discrimination between both group.
