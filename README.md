@@ -43,9 +43,9 @@ The dataset introduces a comprehensive array of columns featuring gameplay metri
 - 'gameid': This column represents a unique identifier for each match played. It allows us to distinguish the matches in the dataset.
   
 ## Data Cleaning
-To eliminate irrelevant column we gonna use further in the project, the project would only keep the relevant columns: 'killsdiffat15', 'assistsdiffat15', 'xpdiffat15', 'golddiffat15', 'csdiffat15', 'league', 'patch', 'participantid', 'gameid'. Moreover, since both team in the same match would have the same absolute difference on kills, assits, xp, gold, minionskill, patch, league, so we would only keep one team row for each math. In this case, we only going to keep participantid = 100. Furthermore, among these columns, since we going to predict the gamelength based on the stats difference at 15mins, so the data set is going to drop any missing value in gamelength and stats difference at 15mins.  
+To eliminate irrelevant column we gonna use further in the project, the dataframe would only keep the relevant columns: 'killsdiffat15', 'assistsdiffat15', 'xpdiffat15', 'golddiffat15', 'csdiffat15', 'league', 'patch', 'participantid', 'gameid'. Moreover, since both team in the same match would have the same absolute difference on kills, assits, xp, gold, minionskill, patch, league, so we would only keep one team row for each math. In this case, we only going to keep participantid = 100. Furthermore, among these columns, since we going to predict the gamelength based on the stats difference at 15mins, so the data set is going to drop any missing value in gamelength and stats difference at 15mins.  
 
-Below is the head of the dataframe. *The dataframe is going to be used for the hypothesis testing
+Below is the head of the dataframe. **The dataframe is only going to be used for the hypothesis testing**
 
 | gameid                |   participantid |   gamelength |   golddiffat15 |   xpdiffat15 |   csdiffat15 |   killsdiffat15 |   assistsdiffat15 |
 |:----------------------|----------------:|-------------:|---------------:|-------------:|-------------:|----------------:|------------------:|
