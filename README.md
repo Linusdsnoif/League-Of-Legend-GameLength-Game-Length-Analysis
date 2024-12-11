@@ -59,7 +59,7 @@ Below is the head of the dataframe. **The dataframe is only going to be used for
 
 
 ## Univariate Analysis
-Below is the univariate analysis of kills difference at 15 mins and gamelength.
+Below is the univariate analysis of kills difference at 15 mins.
 
 <iframe
   src="assets/univariate_kill.html"
@@ -67,3 +67,5 @@ Below is the univariate analysis of kills difference at 15 mins and gamelength.
   height="600"
   frameborder="0"
 ></iframe>
+
+The histogram shows that the distribution of kills difference at 15mins is normal. This suggests that the data is normally distributed and well-behanved.
