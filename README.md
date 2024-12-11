@@ -216,7 +216,7 @@ This is the example of dataframe to perform our tvd test statistic
 
 **Significance Level**: 0.05
 
-After performing the permutation test on `sum_diff` column for 1000 times, our **observed test statistic** is: 360.16532641638827, and our **p-value** is: 0.008.
+After performing the permutation test on `sum_diff` column for 1000 times, our **observed test statistic** is: 360.16532641638827, and our **p-value** is: 0.013.
 
 Here is a histogram containing the distribution of our test statistics during the hypothesis test:
 
