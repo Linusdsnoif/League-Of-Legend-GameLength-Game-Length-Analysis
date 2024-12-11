@@ -43,9 +43,11 @@ The dataset introduces a comprehensive array of columns featuring gameplay metri
 
 - 'gameid': This column represents a unique identifier for each match played. It allows us to distinguish the matches in the dataset.
   
+- 'gamelength': This column records the gamelength of a match in unit of seconds.
+  
 ## Data Cleaning and Exploratory Data Analysis
 ### Data Cleaning
-To eliminate irrelevant column we gonna use further in the project, the dataframe would only keep the relevant columns: 'killsdiffat15', 'assistsdiffat15', 'xpdiffat15', 'golddiffat15', 'csdiffat15', 'league', 'patch', 'participantid', 'gameid'. Moreover, since both team in the same match would have the same absolute difference on kills, assits, xp, gold, minionskill, patch, league, so we would only keep one team row for each math. In this case, we only going to keep participantid = 100. Furthermore, among these columns, since we going to predict the gamelength based on the stats difference at 15mins, so the data set is going to drop any missing value in gamelength and stats difference at 15mins.  
+To eliminate irrelevant column we gonna use further in the project, the dataframe would only keep the relevant columns: 'killsdiffat15', 'assistsdiffat15', 'xpdiffat15', 'golddiffat15', 'csdiffat15', 'league', 'patch', 'participantid', 'gameid', 'gamelength;. Moreover, since both team in the same match would have the same absolute difference on kills, assits, xp, gold, minionskill, patch, league, so we would only keep one team row for each math. In this case, we only going to keep participantid = 100. Furthermore, among these columns, since we going to predict the gamelength based on the stats difference at 15mins, so the data set is going to drop any missing value in gamelength and stats difference at 15mins.  
 
 Below is the head of the dataframe. **The dataframe is only going to be used for the hypothesis testing**
 
@@ -58,7 +60,7 @@ Below is the head of the dataframe. **The dataframe is only going to be used for
 | ESPORTSTMNT01_2690264 |             100 |         2020 |           1478 |          204 |           -9 |               0 |                 4 |
 
 
-## Univariate Analysis
+### Univariate Analysis
 Below is the univariate analysis of kills difference at 15 mins.
 
 <iframe
@@ -81,3 +83,16 @@ Below is also a univariate analysis of gamelength.
 
 The histrogram shows that the distribution is almost nearly normal despite slightly skewness to the right, but overall the gamelength is noramlly distributed 
 suggesting that the data is well distributed.
+
+### Bivariate Analysis
+
+The scatterplot below is bivariate analysis between the relationship of gamelength and minions kill difference at 15mins.
+
+<iframe
+  src="assets/bivariate_minion_kill.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The scatterplot we have seem to follow a trend that as the actual gamelength is longer, the difference of minions kills at 15mins between both teams seem to be smaller because the advantage for one of the team is gonna be smaller comparing to when gamelength is shorter, the difference of minion kills at 15mins is gonna be much significant.
