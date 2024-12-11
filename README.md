@@ -69,3 +69,14 @@ Below is the univariate analysis of kills difference at 15 mins.
 ></iframe>
 
 The histogram shows that the distribution of kills difference at 15mins is normal. This suggests that the data is normally distributed and well-behanved.
+
+Below is also a univariate analysis of gamelength.
+
+<iframe
+  src="assets/univariate_game_length.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The histrogram shows that the distribution is almost nearly normal despite slightly skewness to the right, but overall the gamelength is noramlly distributed.
