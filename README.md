@@ -16,9 +16,17 @@ The central question we are interested in is **Given by the stats difference bet
 ## Introduction of Columns
 The dataset introduces a comprehensive array of columns featuring gameplay metrics and match outcomes from professional League of Legends esports matches. The data set has 150180 rows, and here is an introduction to some of the key columns the project is going to work on:
 
-- 'killsdiffat15' : The 'killsdiffat15' is the new column createdd that finds the total difference of kills between both teams at 15mins.
+- 'killsat15' : One team's count of kill for each individual player and team at 15mins.
 
-- 'assistsdiffat15': The 'assistsdiffat15' is the new createdd that finds the total difference of assists between both teams at 15mins.
+- 'assistsat15' : One team's count of assists for each individual player and team at 15mins.
+
+- 'opp_killsat15' : The opponent's count of kill for each individual player and team at 15mins.
+
+- 'opp_assistsat15' : The opponent's count of assists for each individual player and team at 15mins.
+  
+- 'killsdiffat15' : The 'killsdiffat15' is the new column createdd that finds the total difference of kills(killsat15 - opp_killsat15) between both teams at 15mins.
+
+- 'assistsdiffat15': The 'assistsdiffat15' is the new createdd that finds the total difference of assists(assistsat15 - opp_assistsat15) between both teams at 15mins.
 
 - 'xpdiffat15': The 'xp' column records the total difference of experience between both team at 15mins.
 
@@ -37,7 +45,7 @@ The dataset introduces a comprehensive array of columns featuring gameplay metri
 ## Data Cleaning
 To eliminate irrelevant column we gonna use further in the project, the project would only keep the relevant columns: 'killsdiffat15', 'assistsdiffat15', 'xpdiffat15', 'golddiffat15', 'csdiffat15', 'league', 'patch', 'participantid', 'gameid'. Moreover, since both team in the same match would have the same absolute difference on kills, assits, xp, gold, minionskill, patch, league, so we would only keep one team row for each math. In this case, we only going to keep participantid = 100. Furthermore, among these columns, since we going to predict the gamelength based on the stats difference at 15mins, so the data set is going to drop any missing value in gamelength and stats difference at 15mins.  
 
-Below is the head of the dataframe.
+Below is the head of the dataframe. **The dataframe is going to be used for the hypothesis testing**
 | gameid                |   participantid |   gamelength |   golddiffat15 |   xpdiffat15 |   csdiffat15 |   killsat15 |   assistsat15 |   opp_killsat15 |   opp_assistsat15 |   killsdiffat15 |   assistsdiffat15 |
 |:----------------------|----------------:|-------------:|---------------:|-------------:|-------------:|------------:|--------------:|----------------:|------------------:|----------------:|------------------:|
 | ESPORTSTMNT01_2690210 |             100 |         1713 |            107 |        -1617 |          -23 |           5 |            10 |               6 |                18 |              -1 |                -8 |
