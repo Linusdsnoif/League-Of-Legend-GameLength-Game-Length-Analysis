@@ -261,11 +261,9 @@ Our final model is going to use Lasso regression model. The two additional featu
 After fitting the model, our R^2 score for the training data is now improve to: **0.38012948662203216**, and the RMSE for training data is now improve to: **62279.77921078074**. On the other hand, for the testing data the R^2 score is **0.3851375657358337**, and the RMSE for testing data is now: **60747.45740265901**. The improvement performance is quite substaintial. It is suggested that the model has now improved its ability to predict the gamelength.
 
 ## Fairness Analysis
-In this section, we are going to assess if our model is fair among different areas. The question we are trying to answer here is: **“does my model perform worse for individuals who have monsterkills less than or equal to 100 than it does for individuals who have monster kills greater than 100?"** To answer this question, we performed a permutation test and examined the result of the difference in accuracy between the two groups. 
+In this section, we are going to assess if our model is fair among different areas. The question we are trying to answer here is: **“does my model perform worse for games that happen in LCKC or games that are not happen in LCKC"** To answer this question, we performed a permutation test and examined the result of the difference in RMSE between the two groups. 
 
-The group `X` represents the players who have monsterkills less than or equal to 100, and group `Y` represents those who have monster kills greater than 100. Our evaluation metric is accuracy, and the significance level is 0.05. 
-
-The followings are our hypothesis:
+The followings are the hypothesis:
 
 **Null hypothesis**: Our model is fair. Its RMSE of gamelength for games that happened in LCKC league is the same as the RMSE of gamelength for games that happened in league other than LCKC.
 
