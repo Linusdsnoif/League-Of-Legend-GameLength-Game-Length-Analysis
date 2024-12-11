@@ -53,3 +53,5 @@ Below is the head of the dataframe. **The dataframe is going to be used for the 
 | ESPORTSTMNT01_2690227 |             100 |         1972 |           1191 |         2298 |           15 |           3 |             8 |               1 |                 1 |               2 |                 7 |
 | ESPORTSTMNT01_2690255 |             100 |         2488 |            550 |        -1259 |          -40 |           4 |            11 |               2 |                 5 |               2 |                 6 |
 | ESPORTSTMNT01_2690264 |             100 |         2020 |           1478 |          204 |           -9 |           3 |             7 |               3 |                 3 |               0 |                 4 |              3 |               0 |                 4 |
+
+## Univariate Analysis
