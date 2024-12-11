@@ -47,12 +47,13 @@ To eliminate irrelevant column we gonna use further in the project, the project 
 
 Below is the head of the dataframe. *The dataframe is going to be used for the hypothesis testing
 
-| gameid                |   participantid |   gamelength |   golddiffat15 |   xpdiffat15 |   csdiffat15 |   killsat15 |   assistsat15 |   opp_killsat15 |   opp_assistsat15 |   killsdiffat15 |   assistsdiffat15 |
-|:----------------------|----------------:|-------------:|---------------:|-------------:|-------------:|------------:|--------------:|----------------:|------------------:|----------------:|------------------:|
-| ESPORTSTMNT01_2690210 |             100 |         1713 |            107 |        -1617 |          -23 |           5 |            10 |               6 |                18 |              -1 |                -8 |
-| ESPORTSTMNT01_2690219 |             100 |         2114 |          -1763 |         -906 |          -22 |           1 |             1 |               3 |                 3 |              -2 |                -2 |
-| ESPORTSTMNT01_2690227 |             100 |         1972 |           1191 |         2298 |           15 |           3 |             8 |               1 |                 1 |               2 |                 7 |
-| ESPORTSTMNT01_2690255 |             100 |         2488 |            550 |        -1259 |          -40 |           4 |            11 |               2 |                 5 |               2 |                 6 |
-| ESPORTSTMNT01_2690264 |             100 |         2020 |           1478 |          204 |           -9 |           3 |             7 |               3 |                 3 |               0 |                 4 |
+| gameid                |   participantid |   gamelength |   golddiffat15 |   xpdiffat15 |   csdiffat15 |   killsdiffat15 |   assistsdiffat15 |
+|:----------------------|----------------:|-------------:|---------------:|-------------:|-------------:|----------------:|------------------:|
+| ESPORTSTMNT01_2690210 |             100 |         1713 |            107 |        -1617 |          -23 |              -1 |                -8 |
+| ESPORTSTMNT01_2690219 |             100 |         2114 |          -1763 |         -906 |          -22 |              -2 |                -2 |
+| ESPORTSTMNT01_2690227 |             100 |         1972 |           1191 |         2298 |           15 |               2 |                 7 |
+| ESPORTSTMNT01_2690255 |             100 |         2488 |            550 |        -1259 |          -40 |               2 |                 6 |
+| ESPORTSTMNT01_2690264 |             100 |         2020 |           1478 |          204 |           -9 |               0 |                 4 |
+
 
 ## Univariate Analysis
