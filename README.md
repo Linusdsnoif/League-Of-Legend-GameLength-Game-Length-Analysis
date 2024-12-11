@@ -273,4 +273,13 @@ The followings are the hypothesis:
 
 **Significance Level**: 0.05
 
+Below is the histogram of our test statistics:
+
+<iframe
+  src="assets/fairness.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 After performing the permutation test, the result p-value we got is **0.595**, which is larger than the 0.05 significance level. Consequently, we **fail to reject** the null hypothesis. This outcome implies that our model predicts gamelength from games in LCKC and other than LCKC is similar. Consequently, our model appears to be fair that does not show obvious discrimination between both group.
